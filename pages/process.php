@@ -23,12 +23,12 @@ if(isset($_POST['btn-login'])) {
             $_SESSION['email'] = $row['email'];
             header("Location: home.php");
         } else {
-            header("Location: login.php?"); 
+            header("Location: login.php?err=Incorrect-username-or-password"); 
             echo "Incorrect username or password";
             exit();
         }
     } else {
-        header("Location: login.php?"); 
+        header("Location: login.php?err=Incorrect-username-or-password"); 
         echo "Incorrect username or password";
         exit();
     } 

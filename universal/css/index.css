@@ -1,0 +1,69 @@
+:root {
+  --bg: #181818;
+  --light: #252525;
+  --accent: #984bc5;
+
+  --text: #eddaf1;
+}
+
+.backlight {
+  color: #ffffff75;
+  font-size: 75%;
+}
+
+.app svg {
+  position: fixed;
+  bottom: 0;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: var(--accent);
+}
+
+.main-content button {
+  background-color: var(--accent);
+  color: var(--text);
+  padding: 10px;
+  margin: 20px;
+  position: relative;
+  width: 80%;
+  border-radius: 5px;
+}
+
+.main-content button:hover {
+  background-color: var(--text);
+  color: var(--accent);
+}
+
+.main-content button .material-icons {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 150%;
+}
+
+.main-content {
+  text-align: center;
+
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.app {
+  height: 100vh;
+  width: 100vw;
+  color: var(--text);
+  background-color: var(--bg);
+}

@@ -4,33 +4,208 @@
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Bug Tracker</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <link rel="stylesheet" href="../styles/styles.css">
-    </head>
-    <body>
-        <div class="container-fluid px-0">
-            <div class="row no-gutters">
-                <div class="nav-bar">
-                    <ul>
-                        <div class="title">
-                            <li><h4>Bug Tracker</h4></li>
-                        </div>
-                        <li><a href="#">Dashboard</a></li>
-                        <li><a href="#">Tickets</a></li>
-                        <li><a href="orgs.php">Organization</a></li>
-                        
-                    </ul>
-                </div>
-            </div>  
 
+<head>
+    <title>Bug Tracker</title>
+    <?php include("../universal/scripts/head.php"); ?>
+</head>
+
+<body>
+    <div class="app">
+        <div class="content">
+            <div class="nav-bar">
+                <div class="title">
+
+                </div>
+                <div class="button-grid">
+                    <button class="material-icons">
+                        dashboard
+                    </button>
+                    <button class="material-icons">
+                        confirmation_number
+                    </button>
+                    <button class="material-icons" onclick="location = 'orgs.php'">
+                        business
+                    </button>
+                </div>
+            </div>
+            <div class="home">
+                <button onclick="menu()" class="material-icons" id="menu-btn">menu</button>
+                <h3>Welcome back!</h3>
+            </div>
         </div>
-            
-        
-        
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    </body>
+
+    </div>
+
+    <script>
+    var open = true;
+
+    function menu() {
+        if (open) {
+            console.log("switched")
+            open = false
+            $(".content").css("grid-template-columns", "0px calc(100% - 0px)")
+        } else {
+            console.log("switched")
+            open = true
+            $(".content").css("grid-template-columns", "70px calc(100% - 70px)")
+        }
+    }
+    </script>
+
+
+</body>
+
 </html>
+<style>
+#menu-btn {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 3;
+    width: 70px;
+    height: 70px;
+    background: none;
+    color: var(--text);
+}
+
+.title button {
+    width: 100%;
+    height: 100%;
+    color: var(--text);
+    background: none;
+}
+
+.home {
+    text-align: center;
+    padding: 20px;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 70px calc(100% - 70px);
+    transition: grid-template-columns 0.4s;
+    height: 100%;
+}
+
+.nav-bar {
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    background-color: var(--light);
+    height: 100%;
+    display: grid;
+    grid-template-rows: 70px calc(100% - 50px);
+}
+
+.button-grid {
+    display: grid;
+    height: 100%;
+    grid-auto-rows: 70px;
+}
+
+.button-grid button {
+    background: none;
+    margin: 5px;
+    color: var(--accent);
+    border-radius: 100%;
+    transition: background 0.4s;
+}
+
+.button-grid button:hover {
+    background: var(--bg);
+}
+
+:root {
+    --bg: #181818;
+    --light: #252525;
+    --accent: #984bc5;
+    --err: #D65A31;
+    --text: #eddaf1;
+}
+
+.backlight {
+    color: #ffffff75;
+    font-size: 75%;
+}
+
+.app svg {
+    position: fixed;
+    bottom: 0;
+}
+
+.error {
+    font-size: 90%;
+    color: var(--err);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-box-sizing: border-box;
+    /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;
+    /* Firefox, other Gecko */
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: var(--accent);
+}
+
+.login button {
+    background-color: var(--accent);
+    color: var(--text);
+    padding: 10px;
+    margin: 20px;
+    position: relative;
+    width: 80%;
+    border-radius: 5px;
+}
+
+.login button:hover {
+    background-color: var(--text);
+    color: var(--accent);
+}
+
+.login input {
+    background-color: var(--light);
+    color: var(--text);
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.login button .material-icons {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 150%;
+}
+
+.login {
+    width: 80%;
+    text-align: center;
+
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.app {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    color: var(--text);
+    background-color: var(--bg);
+}
+</style>
